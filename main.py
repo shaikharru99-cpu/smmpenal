@@ -17,6 +17,9 @@ from telegram.ext import (
 
 # ==================== CONFIGURATION ====================
 BOT_TOKEN = os.getenv("BOT_TOKEN")
+
+if not BOT_TOKEN:
+    raise RuntimeError("BOT_TOKEN not found in environment variables")
 ADMIN_IDS = [8136590901]
 DEFAULT_UPI = "yourupi@upi"
 DEFAULT_UPI_NAME = "Your Brand Name"
@@ -542,3 +545,20 @@ Name: {user['full_name']}
             "Choose an option:",
             reply_markup=payment_methods_keyboard()
             )
+# ==================== MAIN RUNNER ====================
+def main():
+    init_db()
+
+    application = Application.builder().token(BOT_TOKEN).build()
+
+    # BASIC HANDLERS
+    application.add_handler(CommandHandler("start", start))
+    application.add_handler(
+        MessageHandler(filters.TEXT & ~filters.COMMAND, handle_main_menu)
+    )
+
+    print("✅ Bot started successfully...")
+    application.run_polling()
+
+if __name__ == "__main__":
+    main()
