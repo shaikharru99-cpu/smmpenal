@@ -16,7 +16,7 @@ from telegram.ext import (
 )
 
 # ==================== CONFIGURATION ====================
-BOT_TOKEN = "7645548720:AAEl-ABnLBWiKvZ2VgF5p6N4NWcMj99GiiU"
+BOT_TOKEN = os.getenv("BOT_TOKEN")
 ADMIN_IDS = [8136590901]
 DEFAULT_UPI = "yourupi@upi"
 DEFAULT_UPI_NAME = "Your Brand Name"
