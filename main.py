@@ -20,7 +20,7 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 if not BOT_TOKEN:
     raise RuntimeError("BOT_TOKEN not found in environment variables")
-ADMIN_IDS = [8136590901]
+ADMIN_IDS = [5678991839]
 DEFAULT_UPI = "yourupi@upi"
 DEFAULT_UPI_NAME = "Your Brand Name"
 DEFAULT_CRYPTO = {
